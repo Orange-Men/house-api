@@ -17,7 +17,10 @@
 
                     <div class="form-group">
                         <label>Price</label>
-                        <input type="range">
+                        <vue-slider v-model="price"
+                                    :max="1000000"
+                                    :tooltip="'focus'"
+                                    :use-keyboard="true"></vue-slider>
                     </div>
 
                     <div class="row">
@@ -93,7 +96,7 @@
         data: function () {
             return {
                 name: '',
-                price: '',
+                price: [0, 1000000],
                 bedrooms: '',
                 bathrooms: '',
                 storeys: '',
@@ -122,12 +125,18 @@
                         if (res.data.status === 'success') {
                             self.houses = res.data.data.houses
                             if (self.houses.length === 0)
-                                console.log('0')
+                                self.$notify({
+                                    type: 'warn',
+                                    title: 'No results were found.'
+                                });
                         }
                     })
                     .catch(function (err) {
                         if (err.response.data.status === 'error')
-                            console.log(err)
+                            self.$notify({
+                                type: 'warn',
+                                title: err.response.data.message
+                            });
                     }).finally(function () {
                     self.loading = false
                 });

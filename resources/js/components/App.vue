@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <house-component/>
+        <notifications position="bottom left"/>
     </div>
 </template>
 

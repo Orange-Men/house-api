@@ -28,6 +28,13 @@ window.Vue = require('vue');
  */
 
 import App from './components/App.vue';
+import VueSlider from 'vue-slider-component'
+import 'vue-slider-component/theme/default.css'
+import Vue from 'vue'
+import Notifications from 'vue-notification'
+
+Vue.use(Notifications)
+Vue.component('VueSlider', VueSlider)
 
 const app = new Vue({
     el: '#app',
