@@ -28,10 +28,10 @@ class GetHouse extends FormRequest
             'price' => 'array',
             'price.0'  => 'required_with:price|numeric|min:0',
             'price.1'  => 'required_with:price.0|numeric|min:0',
-            'bedrooms' => 'integer',
-            'bathrooms' => 'integer',
-            'storeys' => 'integer',
-            'garages' => 'integer'
+            'bedrooms' => 'integer|min:0',
+            'bathrooms' => 'integer|min:0',
+            'storeys' => 'integer|min:0',
+            'garages' => 'integer|min:0'
         ];
     }
 }
