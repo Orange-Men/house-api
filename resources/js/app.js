@@ -19,7 +19,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,6 +27,19 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import App from './components/App.vue';
+import VueSlider from 'vue-slider-component'
+import 'vue-slider-component/theme/default.css'
+import Vue from 'vue'
+import Notifications from 'vue-notification'
+
+Vue.use(Notifications)
+Vue.component('VueSlider', VueSlider)
+
 const app = new Vue({
     el: '#app',
+    components: {
+        App
+    },
+    render: h => h(App)
 });
